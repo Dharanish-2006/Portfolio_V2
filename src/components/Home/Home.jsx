@@ -224,7 +224,7 @@ export default function Home() {
               View Projects →
             </Link>
             <a
-              href="/Dharanish_Resume.pdf"
+              href="public/Dharanish_Resume.pdf"
               download="Dharanish_Resume.pdf"
               className="btn btn-resume"
             >
