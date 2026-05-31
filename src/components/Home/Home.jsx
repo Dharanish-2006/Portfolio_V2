@@ -6,6 +6,7 @@ import {
   AiFillGithub, AiFillInstagram, AiFillLinkedin,
 } from 'react-icons/ai'
 import { ImPointRight } from 'react-icons/im'
+import { HiDownload } from 'react-icons/hi'
 
 const TYPING_STRINGS = [
   'Python Fullstack Developer',
@@ -31,20 +32,17 @@ function useTypewriter(strings, typeSpeed = 80, deleteSpeed = 45, pause = 1600) 
       const current = strings[si]
 
       if (!deleting) {
-        // Typing forward
         const next = current.slice(0, ci + 1)
         setDisplay(next)
         state.current.ci = ci + 1
 
         if (ci + 1 === current.length) {
-          // Finished typing — pause then delete
           state.current.deleting = true
           timeout = setTimeout(tick, pause)
         } else {
           timeout = setTimeout(tick, typeSpeed)
         }
       } else {
-        // Deleting
         const next = current.slice(0, ci - 1)
         setDisplay(next)
         state.current.ci = ci - 1
@@ -152,6 +150,36 @@ export default function Home() {
           vertical-align: middle;
           border-radius: 1px;
         }
+        @keyframes resume-shimmer {
+          0%   { background-position: -200% center; }
+          100% { background-position:  200% center; }
+        }
+        .btn-resume {
+          background: transparent;
+          color: var(--text);
+          border: 1px solid var(--border);
+          position: relative;
+          overflow: hidden;
+        }
+        .btn-resume::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            105deg,
+            transparent 35%,
+            oklch(0.68 0.18 35 / 0.18) 50%,
+            transparent 65%
+          );
+          background-size: 200% 100%;
+          animation: resume-shimmer 2.8s ease-in-out infinite;
+        }
+        .btn-resume:hover {
+          border-color: var(--accent);
+          color: var(--accent);
+          background: oklch(0.68 0.18 35 / 0.08);
+        }
+        .btn-resume:hover::before { animation-play-state: paused; }
       `}</style>
 
       <div className="hero-wrap">
@@ -179,6 +207,7 @@ export default function Home() {
             I'M{' '}
             <span className="hero-name" ref={nameRef}>DHARANISH</span>
           </h1>
+
           <div
             className="typewriter-text"
             style={{ marginBottom: '2rem', animation: 'hero-title-in 0.8s 0.3s var(--ease-out-expo) both' }}
@@ -194,6 +223,14 @@ export default function Home() {
             <Link to="/project" className="btn btn-accent">
               View Projects →
             </Link>
+            <a
+              href="/Dharanish_Resume.pdf"
+              download="Dharanish_Resume.pdf"
+              className="btn btn-resume"
+            >
+              <HiDownload size={15} />
+              Resume
+            </a>
             <a href="#about" className="btn btn-ghost">
               About Me
             </a>

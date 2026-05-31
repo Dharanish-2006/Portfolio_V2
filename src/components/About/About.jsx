@@ -4,23 +4,24 @@ import { CgCPlusPlus } from 'react-icons/cg'
 import {
   DiJavascript1, DiReact, DiNodejs, DiMongodb,
   DiPython, DiGit, DiJava, DiDjango, DiBootstrap,
+  DiExtjs,
 } from 'react-icons/di'
-import { SiVercel, SiRender } from 'react-icons/si'
+import { SiVercel, SiRender, SiExpress } from 'react-icons/si'
 import { VscVscode } from 'react-icons/vsc'
 import { AiFillGithub, AiFillInstagram, AiFillLinkedin } from 'react-icons/ai'
 import { ImPointRight } from 'react-icons/im'
 
 const TECH = [
-  { icon: <CgCPlusPlus />,    label: 'C++' },
-  { icon: <DiJavascript1 />,  label: 'JavaScript' },
-  { icon: <DiBootstrap />,    label: 'Bootstrap' },
-  { icon: <DiNodejs />,       label: 'Node.js' },
-  { icon: <DiReact />,        label: 'React' },
-  { icon: <DiMongodb />,      label: 'MongoDB' },
-  { icon: <DiGit />,          label: 'Git' },
-  { icon: <DiPython />,       label: 'Python' },
   { icon: <DiDjango />,       label: 'Django' },
+  { icon: <DiMongodb />,      label: 'MongoDB' },
+  { icon: <SiExpress/> ,      label: 'Express' },
+  { icon: <DiReact />,        label: 'React' },
+  { icon: <DiNodejs />,       label: 'Node.js' },
+  { icon: <DiGit />,          label: 'Git' },
+  { icon: <DiBootstrap />,    label: 'Bootstrap' },
+  { icon: <DiPython />,       label: 'Python' },
   { icon: <DiJava />,         label: 'Java' },
+  { icon: <DiJavascript1 />,  label: 'JavaScript' },
 ]
 
 const TOOLS = [
@@ -39,26 +40,53 @@ export default function About() {
       <section>
         <div className="about-grid">
           <div>
-            <span className="section-eyebrow reveal">Know Who I'M</span>
+            <span className="section-eyebrow reveal">Get to know me</span>
             <h1 className="section-title reveal reveal-d1">
-              Hi Everyone, I am{' '}
+              Hi, I'm{' '}
               <span style={{ color: 'var(--accent)' }}>Dharanish</span>{' '}
-              from{' '}
-              <span style={{ color: 'var(--accent)' }}>Chennai, India.</span>
+              —{' '}
+              <span style={{ color: 'var(--accent)' }}>Chennai-based</span>{' '}
+              Full-Stack Developer.
             </h1>
             <div className="about-text">
               <p className="reveal reveal-d2">
-                I am currently pursuing <strong>BCA</strong>.
+                I'm a <strong>BCA student</strong> and self-driven developer who
+                loves turning ideas into real, working products. I picked up
+                programming out of curiosity and never really stopped — what
+                started as tinkering with small scripts has grown into building
+                full-stack web applications used by real people.
               </p>
               <p className="reveal reveal-d3">
-                Apart from coding, some other activities that I love to do!
+                My stack of choice spans <strong>Python & Django</strong> on the
+                backend and <strong>React.js</strong> on the frontend, stitched
+                together with <strong>Node.js</strong>, <strong>MongoDB</strong>,
+                and a healthy obsession with clean API design. I care about both
+                how things work <em>and</em> how they feel to use.
+              </p>
+              <p className="reveal reveal-d4">
+                I'm currently open to <strong>freelance projects</strong>,
+                internships, and open-source collaborations. If you have an idea
+                that needs building — or a codebase that needs rescuing — let's
+                talk.
+              </p>
+              <p className="reveal reveal-d5">
+                Outside of code, I write <strong>tech blogs</strong> to share
+                what I learn, and I recharge by <strong>travelling</strong> to
+                places I've never been before.
               </p>
 
-              <ul style={{
-                listStyle: 'none', marginTop: '0.5rem',
-                display: 'flex', flexDirection: 'column', gap: '0.6rem',
-              }} className="reveal reveal-d4">
-                {['Writing Tech Blogs', 'Travelling'].map(item => (
+              <ul
+                style={{
+                  listStyle: 'none', marginTop: '1.5rem',
+                  display: 'flex', flexDirection: 'column', gap: '0.6rem',
+                }}
+                className="reveal"
+              >
+                {[
+                  'Currently pursuing BCA',
+                  'Available for freelance & internships',
+                  'Exploring new places whenever I can',
+                ].map(item => (
                   <li key={item} style={{
                     display: 'flex', alignItems: 'center', gap: '0.7rem',
                     color: 'var(--muted)', fontSize: '0.95rem',
@@ -68,10 +96,6 @@ export default function About() {
                   </li>
                 ))}
               </ul>
-
-              <div className="about-quote reveal reveal-d5">
-                "Strive to build things that make a difference!"
-              </div>
             </div>
           </div>
 
@@ -93,13 +117,12 @@ export default function About() {
 
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
               {[
-                'Pursuing BCA',
-                'Writing tech blogs',
-                'Freelancing',
-                'Open-source contributions',
-                'Travelling',
-              ].map(item => (
-                <li key={item} style={{
+                { dot: true, text: 'BCA Student' },
+                { dot: true, text: 'Full-Stack (Django + MERN)' },
+                { dot: true, text: 'Open to freelance & internships' },
+                { dot: true, text: 'Tech blogger' },
+              ].map(({ text }) => (
+                <li key={text} style={{
                   display: 'flex', alignItems: 'center', gap: '0.7rem',
                   fontSize: '0.83rem', color: 'var(--muted)',
                   padding: '0.5rem 0.8rem',
@@ -110,13 +133,18 @@ export default function About() {
                     width: '6px', height: '6px', borderRadius: '50%',
                     background: 'var(--accent)', flexShrink: 0,
                   }} />
-                  {item}
+                  {text}
                 </li>
               ))}
             </ul>
 
             <div className="stats-row">
-              {[['4+','Projects'],['3+','Stacks'],['2+','Years'],['100%','Open Source']].map(([n,l]) => (
+              {[
+                ['4+',   'Projects'],
+                ['3+',   'Tech Stacks'],
+                ['2+',   'Years Coding'],
+                ['100%', 'Open Source'],
+              ].map(([n, l]) => (
                 <div className="stat-cell" key={l}>
                   <div className="stat-num">{n}</div>
                   <div className="stat-label">{l}</div>
@@ -129,12 +157,16 @@ export default function About() {
 
       {/* ── PROFESSIONAL SKILLSET ── */}
       <section style={{ paddingTop: '2rem' }}>
-        <h2 className="section-title reveal" style={{ textAlign: 'center' }}>
+        <span className="section-eyebrow reveal" style={{ display: 'block', textAlign: 'center' }}>
+          What I work with
+        </span>
+        <h2 className="section-title reveal reveal-d1" style={{ textAlign: 'center' }}>
           Professional{' '}
           <span style={{ color: 'var(--accent)' }}>Skillset</span>
         </h2>
-        <p className="section-sub reveal reveal-d1" style={{ textAlign: 'center', margin: '0 auto 2.5rem' }}>
-          Technologies I work with on a daily basis.
+        <p className="section-sub reveal reveal-d2" style={{ textAlign: 'center', margin: '0 auto 2.5rem' }}>
+          Technologies I reach for when building — from frontend interfaces
+          to backend APIs and databases.
         </p>
         <div className="tech-grid">
           {TECH.map(({ icon, label }, i) => (
@@ -152,11 +184,14 @@ export default function About() {
 
       {/* ── TOOLS ── */}
       <section style={{ paddingTop: '0' }}>
-        <h2 className="section-title reveal" style={{ textAlign: 'center' }}>
+        <span className="section-eyebrow reveal" style={{ display: 'block', textAlign: 'center' }}>
+          My everyday toolkit
+        </span>
+        <h2 className="section-title reveal reveal-d1" style={{ textAlign: 'center' }}>
           <span style={{ color: 'var(--accent)' }}>Tools</span> I Use
         </h2>
-        <p className="section-sub reveal reveal-d1" style={{ textAlign: 'center', margin: '0 auto 2.5rem' }}>
-          My everyday development toolkit.
+        <p className="section-sub reveal reveal-d2" style={{ textAlign: 'center', margin: '0 auto 2.5rem' }}>
+          The tools that keep me productive and my deployments running smoothly.
         </p>
         <div className="tools-grid">
           {TOOLS.map(({ icon, label }, i) => (
@@ -174,13 +209,17 @@ export default function About() {
 
       {/* ── DAYS I CODE ── */}
       <section className="gh-section">
-        <h2 className="section-title reveal" style={{ marginBottom: '0.5rem' }}>
+        <span className="section-eyebrow reveal" style={{ display: 'block' }}>
+          Consistency over intensity
+        </span>
+        <h2 className="section-title reveal reveal-d1" style={{ marginBottom: '0.5rem' }}>
           Days I <span style={{ color: 'var(--accent)' }}>Code</span>
         </h2>
-        <p className="section-sub reveal reveal-d1" style={{ margin: '0 auto 2rem' }}>
-          My GitHub contribution activity over the past year.
+        <p className="section-sub reveal reveal-d2" style={{ margin: '0 auto 2rem' }}>
+          A visual of my GitHub contributions over the past year — proof that
+          showing up daily beats waiting for inspiration.
         </p>
-        <div className="gh-wrap reveal reveal-d2">
+        <div className="gh-wrap reveal reveal-d3">
           <GitHubCalendar
             username="Dharanish-2006"
             blockSize={13}
@@ -205,8 +244,8 @@ export default function About() {
           Let's build something <span>great.</span>
         </p>
         <p className="contact-sub reveal reveal-d1">
-          Open to freelance, internship, and collaboration opportunities.
-          Feel free to connect!
+          Whether it's a freelance project, internship, or just a good
+          conversation about tech — my inbox is always open.
         </p>
         <div className="hero-ctas reveal reveal-d2" style={{ justifyContent: 'center', marginBottom: '1rem' }}>
           <a
