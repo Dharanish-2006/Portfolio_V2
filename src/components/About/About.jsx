@@ -5,6 +5,7 @@ import {
   DiJavascript1, DiReact, DiNodejs, DiMongodb,
   DiPython, DiGit, DiJava, DiDjango, DiBootstrap,
 } from 'react-icons/di'
+import { SiExpress } from 'react-icons/si'
 import { SiVercel, SiRender } from 'react-icons/si'
 import { VscVscode } from 'react-icons/vsc'
 import { AiFillGithub, AiFillInstagram, AiFillLinkedin } from 'react-icons/ai'
